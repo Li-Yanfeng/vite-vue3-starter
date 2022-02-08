@@ -1,12 +1,13 @@
 import { resolve } from 'path'
-import Tov from './presets/tov'
+import plugins from './presets/plugin.config'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-	resolve: {
-		alias: {
-			'~/': `${resolve(__dirname, 'src')}/`
-		}
-	},
-	plugins: [Tov()]
+    resolve: {
+        alias: {
+            // 配置别名
+            '~': `${resolve(__dirname, 'src')}`
+        }
+    },
+    plugins: plugins()
 })

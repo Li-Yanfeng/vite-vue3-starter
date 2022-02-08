@@ -1,30 +1,14 @@
-import {
-    useInquirerList,
-    useInquirerConfirm,
-    useInquirerQuestion
-} from "@markthree/ilazy"
+import { useInquirerList, useInquirerConfirm, useInquirerQuestion } from '@markthree/ilazy'
 
-import {
-    remove,
-    createPath,
-    terminalColor,
-    pathExistsSync,
-} from "@markthree/node-shared"
+import { remove, createPath, terminalColor, pathExistsSync } from '@markthree/node-shared'
 
-import {
-    noticeFail,
-    noticeSuccess
-} from "./shared/log"
-
+import { noticeFail, noticeSuccess } from './shared/log'
 
 const runAutoRemove = async () => {
-    const type = await useInquirerList(
-        '您希望删除以下哪种类型的模块呢？',
-        {
-            default: 'component',
-            choices: ['page', 'component']
-        }
-    )
+    const type = await useInquirerList('您希望删除以下哪种类型的模块呢？', {
+        default: 'component',
+        choices: ['page', 'component']
+    })
 
     const t = typeToZh(type)
 
@@ -52,7 +36,7 @@ const srcBasePaths = {
 }
 
 // 类型转中文
-const typeToZh = t => {
+const typeToZh = (t) => {
     const types = {
         page: '页面',
         component: '组件'
@@ -61,7 +45,7 @@ const typeToZh = t => {
 }
 
 // 删除组件
-const removeComponent = async name => {
+const removeComponent = async (name) => {
     const sP = createPath(srcBasePaths.component)
     const src = sP(`./${name}`)
     const shouldRemove = await isWillRemove(src, '组件')
@@ -87,12 +71,9 @@ const removePage = async (name) => {
 // 是否将删除
 const isWillRemove = async (src, type) => {
     const existPaths = getExistPaths(src)
-    const fileExist = Object.values(existPaths).some(v => v)
+    const fileExist = Object.values(existPaths).some((v) => v)
     if (fileExist) {
-        return await useInquirerConfirm(
-            '再次确认是否删除?',
-            false
-        )
+        return await useInquirerConfirm('再次确认是否删除?', false)
     }
     console.log(terminalColor.red(`项目中不存在该${type}`))
     return false

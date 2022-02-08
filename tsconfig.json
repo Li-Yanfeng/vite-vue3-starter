@@ -1,29 +1,28 @@
 {
-	"compilerOptions": {
-		"strict": true,
-		"jsx": "preserve",
-		"target": "esnext",
-		"module": "esnext",
-		"sourceMap": true,
-		"skipLibCheck": true,
-		"isolatedModules": true,
-		"esModuleInterop": true,
-		"lib": ["esnext", "dom"],
-		"resolveJsonModule": true,
-		"moduleResolution": "node",
-		"useDefineForClassFields": true,
-		"baseUrl": ".",
-		"paths": {
-			"~/*": ["src/*"]
-		}
-	},
-	"include": [
-		"srcipts",
-		"presets",
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue"
-	],
-	"exclude": ["node_modules", "dist"]
+    // 配置编译选项
+    "compilerOptions": {
+        /* Basic Options */
+        "target": "esnext", // 指定编译之后的版本目标
+        "module": "esnext", // 指定要使用的模块标准
+        "lib": ["esnext", "dom"], // 指定要包含在编译中的库文件
+        "sourceMap": true, // 编译时是否生成.map文件
+        "isolatedModules": true, // 是否将每个文件作为单独的模块
+
+        /* Strict Type-Checking Options */
+        "strict": true, // 启用所有严格类型检查选项
+        "jsx": "preserve",
+
+        /* Module Resolution Options */
+        "moduleResolution": "node", // 选择模块解析策略
+        "esModuleInterop": true, // 为导入内容创建命名空间，实现CommonJS和ES模块之间的互操作性
+        "baseUrl": ".", // 设置解析非相对模块名称的基本目录
+        "paths": {
+            // 设置模块名称到基于baseUrl的路径映射
+            "~/*": ["src/*"]
+        }
+    },
+    // 需要编译的文件或目录
+    "include": ["srcipts", "presets", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+    // 需要排除的文件或目录
+    "exclude": ["node_modules", "dist"]
 }
