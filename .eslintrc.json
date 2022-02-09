@@ -1,0 +1,46 @@
+{
+    "root": true, // 标识当前配置文件为eslint的根配置文件，让其停止在父级目录中继续寻找
+    // 运行环境
+    "env": {
+        "browser": true, // 浏览器环境中的全局变量
+        "es2021": true, // es版本,
+        "node": true // Node.js 全局变量和 Node.js 作用域
+    },
+    // 规则继承
+    "extends": [
+        "plugin:vue/vue3-strongly-recommended", // eslint规则:提高代码可读性或开发体验的规则
+        "airbnb-base", // airbnb 规则
+        "@vue/typescript/recommended", // typescript规则
+        "@vue/prettier", // 自动格式化、代码修复
+        "prettier" // 配置优先级：Prettier 配置规则 > ESLint 配置规则
+    ],
+    // 解析器配置项
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": 12, // 支持的ES语法版本
+        "sourceType": "module" // 指定JS代码来源的类型
+    },
+    // 插件
+    "plugins": ["vue", "@typescript-eslint"],
+    // 自定义规则：0 => "off"
+    "rules": {
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "import/no-absolute-path": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/prefer-default-export": "off",
+
+        "vue/script-setup-uses-vars": "error",
+        "vue/no-multiple-template-root": "off",
+        "vue/multi-word-component-names": "off",
+
+        "@typescript-eslint/no-unused-vars": "off",
+
+        "no-param-reassign": 2, // 禁止对 function 的参数进行重新赋值
+        "no-undef": 0, // 禁用未声明的变量
+        "no-use-before-define": 0, // 禁止在变量定义之前使用它们
+        "no-unused-expressions": 0, // 禁止出现未使用过的表达式
+        "no-underscore-dangle":  0, // 禁止标识符中有悬空下划线
+        "guard-for-in": 0 // 要求 for-in 循环中有一个 if 语句
+    }
+}
