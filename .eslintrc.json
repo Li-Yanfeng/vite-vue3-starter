@@ -22,19 +22,20 @@
     },
     // 插件
     "plugins": ["vue", "@typescript-eslint"],
-    // 自定义规则：0 => "off"
+    // 自定义规则
     "rules": {
-        "import/extensions": "off",
-        "import/no-unresolved": "off",
-        "import/no-absolute-path": "off",
-        "import/no-extraneous-dependencies": "off",
-        "import/prefer-default-export": "off",
+        "import/extensions": 0,
+        "import/no-unresolved": 0,
+        "import/no-absolute-path": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/prefer-default-export": 0,
 
-        "vue/script-setup-uses-vars": "error",
-        "vue/no-multiple-template-root": "off",
-        "vue/multi-word-component-names": "off",
+        "vue/script-setup-uses-vars": 2,
+        "vue/no-multiple-template-root": 0,
+        "vue/multi-word-component-names": 0,
+        "vue/comment-directive":  0,
 
-        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": 0,
 
         "no-param-reassign": 2, // 禁止对 function 的参数进行重新赋值
         "no-undef": 0, // 禁用未声明的变量

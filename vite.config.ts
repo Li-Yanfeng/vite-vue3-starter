@@ -1,6 +1,6 @@
 import { resolve } from 'path'
-import plugins from './presets/plugin.config'
 import { defineConfig } from 'vite'
+import plugins from './presets/plugin.config'
 
 export default defineConfig({
     resolve: {
