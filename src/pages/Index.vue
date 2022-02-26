@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDarks } from '~/composables/useDarks'
+import useDarks from '~/composables/useDarks'
 
 const { t, locale } = useI18n()
 const { isDark, toggleDark } = useDarks()
@@ -10,7 +10,7 @@ const toggleLocale = () => {
 </script>
 
 <template>
-    <div class="m-6">Hello，This is the tov template！！</div>
-    <div class="cursor-pointer m-6" @click="toggleDark()">light: {{ isDark }} click me!!</div>
-    <div class="cursor-pointer m-6" @click="toggleLocale()">language: {{ t('index') }} click me!!</div>
+    <div class="m-6">Hello，This is the vite vue3 starter！</div>
+    <div class="cursor-pointer m-6" @click="toggleDark()">light: {{ isDark }} click me!</div>
+    <div class="cursor-pointer m-6" @click="toggleLocale()">language: {{ t('index') }} click me!</div>
 </template>

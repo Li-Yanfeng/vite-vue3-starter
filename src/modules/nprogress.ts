@@ -9,6 +9,7 @@ export default (app: App) => {
     router.beforeEach(() => {
         NProgress.start()
     })
+
     router.afterEach(() => {
         NProgress.done()
     })

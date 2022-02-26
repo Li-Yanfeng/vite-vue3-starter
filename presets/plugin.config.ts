@@ -1,29 +1,36 @@
-import './shared/global'
 import { resolve } from 'path'
+import Vue from '@vitejs/plugin-vue'
+import Prism from 'markdown-it-prism'
+import Markdown from 'vite-plugin-md'
 import Pages from 'vite-plugin-pages'
 import Icons from 'unplugin-icons/vite'
 import Inspect from 'vite-plugin-inspect'
+import Watcher from 'vite-plugin-watcher'
 import Windicss from 'vite-plugin-windicss'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import ViteRestart from 'vite-plugin-restart'
 import Layouts from 'vite-plugin-vue-layouts'
+import I18n from '@intlify/vite-plugin-vue-i18n'
+import { viteMockServe } from 'vite-plugin-mock'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import { AntDesignVueResolver, ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
-import { viteMockServe } from 'vite-plugin-mock'
-import Markdown from 'vite-plugin-md'
-import Vue from '@vitejs/plugin-vue'
-import Prism from 'markdown-it-prism'
-import I18n from '@intlify/vite-plugin-vue-i18n'
-import ViteRestart from 'vite-plugin-restart'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import viteCompression from 'vite-plugin-compression'
-import { StoresResolver } from './shared/resolvers'
+import { dirResolver, DirResolverHelper } from 'vite-auto-import-resolvers'
+import { AntDesignVueResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
+import OptimizationPersist from 'vite-plugin-optimize-persist'
+import PkgConfig from 'vite-plugin-package-config'
+import { restart } from './shared/restart'
 
 const markdownWrapperClasses =
     'prose md:prose-lg lg:prose-lg dark:prose-invert text-left p-10 prose-slate prose-img:rounded-xl prose-headings:underline prose-a:text-blue-600'
 
 export default () => {
     return [
+        // 将包信息文件作为 vite 的配置文件之一，为 vite-plugin-optimize-persist 所用
+        PkgConfig(),
+        // 依赖预构建分析，提高大型项目性能
+        OptimizationPersist(),
         // vue 官方插件，用来解析 sfc
         Vue({
             include: [/\.vue$/, /\.md$/]
@@ -41,6 +48,11 @@ export default () => {
         }),
         // 布局系统
         Layouts(),
+        // layouts 目录下文件新增重启
+        Watcher((w) => {
+            w.add('./src/layouts')
+            w.on('add', restart)
+        }),
         // 调试工具
         Inspect(),
         // windicss 插件
@@ -58,13 +70,22 @@ export default () => {
             extensions: ['vue', 'md', 'tsx'],
             include: [/\.md$/, /\.vue$/, /\.tsx$/],
             dts: resolve(__dirname, './types/components.d.ts'),
-            resolvers: [IconsResolver(), ElementPlusResolver(), AntDesignVueResolver(), VueUseComponentsResolver()]
+            resolvers: [IconsResolver(), AntDesignVueResolver(), VueUseComponentsResolver()]
         }),
+        // 目录下 api 按需自动引入辅助插件
+        DirResolverHelper(),
         // api 自动按需引入
         AutoImport({
             dts: './presets/types/auto-imports.d.ts',
             imports: ['vue', 'pinia', 'vue-i18n', 'vue-router', '@vueuse/core'],
-            resolvers: [StoresResolver, ElementPlusResolver()]
+            resolvers: [
+                AntDesignVueResolver(),
+                dirResolver({ prefix: 'use' }),
+                dirResolver({
+                    target: 'stores',
+                    suffix: 'Store'
+                })
+            ]
         }),
         // i18n 国际化支持
         I18n({

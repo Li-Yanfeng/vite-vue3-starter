@@ -1,6 +1,6 @@
-import { noticeSuccess, noticeFail } from './shared/log'
 import { useInquirerList, useInquirerConfirm, useInquirerQuestion } from '@markthree/ilazy'
 import { createPath, createFile, readFileSync, pathExistsSync, templateCompile } from '@markthree/node-shared'
+import { noticeSuccess, noticeFail } from './shared/log'
 
 const p = createPath(__dirname)
 
@@ -47,7 +47,7 @@ const run = async () => {
 run()
 
 // 是否将覆盖
-const isWillCreate = async (dest: string, msg: string = '文件已存在，是否覆盖?') => {
+const isWillCreate = async (dest: string, msg = '文件已存在，是否覆盖?') => {
     if (pathExistsSync(dest)) {
         return await useInquirerConfirm(msg, false)
     }

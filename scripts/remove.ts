@@ -80,8 +80,8 @@ const isWillRemove = async (src, type) => {
 }
 
 const getExistPaths = (src) => {
-    const md = src + '.md'
-    const vue = src + '.vue'
+    const md = `${src}.md`
+    const vue = `${src}.vue`
     const mdExist = pathExistsSync(md)
     const vueExist = pathExistsSync(vue)
     return { [md]: mdExist, [vue]: vueExist }
