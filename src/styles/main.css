@@ -17,7 +17,7 @@ html.dark {
 }
 
 /**
- * 全局进度条
+ * 进度条
  */
 #nprogress {
     pointer-events: none;
@@ -36,7 +36,7 @@ html.dark {
 }
 
 /*
- * 全局滚动条
+ * 滚动条
  */
 ::-webkit-scrollbar {
     width: 11px;

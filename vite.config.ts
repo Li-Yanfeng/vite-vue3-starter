@@ -1,12 +1,16 @@
+/**
+ * vite config
+ *
+ * @see https://vitejs.dev/config/
+ */
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import plugins from './presets/plugin.config'
+import plugins from './build/plugins'
 
 export default defineConfig({
     resolve: {
         alias: {
-            // 配置别名
-            '~': `${resolve(__dirname, 'src')}`
+            '~/': `${resolve(__dirname, 'src')}/`
         }
     },
     plugins: plugins()

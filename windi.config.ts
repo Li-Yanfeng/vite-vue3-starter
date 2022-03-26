@@ -1,3 +1,8 @@
+/**
+ * windicss config
+ *
+ * @see https://windicss.org/features/
+ */
 import Typography from 'windicss/plugin/typography'
 import { defineConfig } from 'windicss/helpers'
 

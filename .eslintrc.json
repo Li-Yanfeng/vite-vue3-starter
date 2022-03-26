@@ -22,7 +22,14 @@
     },
     // 插件
     "plugins": ["vue", "@typescript-eslint"],
-    // 自定义规则
+    /**
+     * 自定义规则
+     * 0 - 关闭规则
+     * 1 - 开启规则, 使用警告
+     * 2 - 开启规则, 使用错误 程序退出
+     *
+     * @see https://blog.csdn.net/gongch0604/article/details/97951222
+     */
     "rules": {
         "import/extensions": 0,
         "import/no-unresolved": 0,
@@ -33,7 +40,7 @@
         "vue/script-setup-uses-vars": 2,
         "vue/no-multiple-template-root": 0,
         "vue/multi-word-component-names": 0,
-        "vue/comment-directive":  0,
+        "vue/comment-directive": 0,
 
         "@typescript-eslint/no-unused-vars": 0,
 
@@ -41,7 +48,7 @@
         "no-undef": 0, // 禁用未声明的变量
         "no-use-before-define": 0, // 禁止在变量定义之前使用它们
         "no-unused-expressions": 0, // 禁止出现未使用过的表达式
-        "no-underscore-dangle":  0, // 禁止标识符中有悬空下划线
+        "no-underscore-dangle": 0, // 禁止标识符中有悬空下划线
         "guard-for-in": 0 // 要求 for-in 循环中有一个 if 语句
     }
 }
