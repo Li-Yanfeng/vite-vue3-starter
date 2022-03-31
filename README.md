@@ -946,7 +946,7 @@ pnpm coverage
 ```html
 <!-- src/pages/index.vue -->
 <script lang="ts" setup>
-    import { useDarks } from '~/composables/dark'
+    import { useDarks } from '@/composables/dark'
 
     // 等价于
     // import { useDarks } from "../composables/dark"

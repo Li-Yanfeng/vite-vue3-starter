@@ -22,9 +22,15 @@ import { GenerateTitle } from './plugins/html'
 import { FixLayoutsHmr } from './plugins/layouts'
 import { AutoImportResolvers } from './shared/resolvers'
 import Markdown, { markdownWrapperClasses } from './plugins/markdown'
-import { env } from './shared/env'
 
-export default () => {
+/**
+ * create plugin
+ *
+ * @param viteEnv /
+ */
+export function createPlugins(viteEnv: any) {
+    const { VITE_USE_MOCK, VITE_APP_INSPECT, VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv
+
     return [
         Modules(),
         // 生成 title
@@ -47,7 +53,7 @@ export default () => {
         Layouts(),
         // 调试工具
         Inspect({
-            enabled: env.VITE_APP_INSPECT
+            enabled: VITE_APP_INSPECT
         }),
         // windicss 插件
         Windicss({
@@ -55,7 +61,7 @@ export default () => {
         }),
         // mock 服务
         viteMockServe({
-            prodEnabled: env.VITE_APP_MOCK_IN_PRODUCTION
+            prodEnabled: VITE_USE_MOCK
         }),
         // https://icones.netlify.app/
         Icons({
@@ -90,7 +96,8 @@ export default () => {
         vueJsx(),
         // 生产环境资源压缩
         viteCompression({
-            algorithm: env.VITE_APP_COMPRESSINON_ALGORITHM
+            algorithm: VITE_BUILD_COMPRESS,
+            deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
         }),
         // 对 vite-plugin-vue-layouts 的 hmr 问题的临时处理
         // 如果 https://github.com/JohnCampionJr/vite-plugin-vue-layouts/pull/58 被接受的话，未来可能会移除
