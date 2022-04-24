@@ -6,9 +6,9 @@ import Inspect from 'vite-plugin-inspect'
 import Windicss from 'vite-plugin-windicss'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import ViteRestart from 'vite-plugin-restart'
-import Layouts from 'vite-plugin-vue-layouts'
 import I18n from '@intlify/vite-plugin-vue-i18n'
 import { viteMockServe } from 'vite-plugin-mock'
+import Layouts from 'vite-plugin-vue-meta-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
@@ -19,7 +19,6 @@ import Modules from 'vite-plugin-use-modules'
 import PkgConfig from 'vite-plugin-package-config'
 import OptimizationPersist from 'vite-plugin-optimize-persist'
 import { GenerateTitle } from './plugins/html'
-import { FixLayoutsHmr } from './plugins/layouts'
 import { AutoImportResolvers } from './shared/resolvers'
 import Markdown, { markdownWrapperClasses } from './plugins/markdown'
 
@@ -29,10 +28,13 @@ import Markdown, { markdownWrapperClasses } from './plugins/markdown'
  * @param viteEnv /
  */
 export function createPlugins(viteEnv: any) {
-    const { VITE_USE_MOCK, VITE_APP_INSPECT, VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv
+    const { VITE_USE_MOCK, VITE_APP_INSPECT, VITE_BUILD_COMPRESS } = viteEnv
 
     return [
-        Modules(),
+        // 模块自动加载
+        Modules({
+            auto: true
+        }),
         // 生成 title
         GenerateTitle(),
         // 将包信息文件作为 vite 的配置文件之一，为 vite-plugin-optimize-persist 所用
@@ -96,11 +98,7 @@ export function createPlugins(viteEnv: any) {
         vueJsx(),
         // 生产环境资源压缩
         viteCompression({
-            algorithm: VITE_BUILD_COMPRESS,
-            deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
-        }),
-        // 对 vite-plugin-vue-layouts 的 hmr 问题的临时处理
-        // 如果 https://github.com/JohnCampionJr/vite-plugin-vue-layouts/pull/58 被接受的话，未来可能会移除
-        FixLayoutsHmr()
+            algorithm: VITE_BUILD_COMPRESS
+        })
     ]
 }

@@ -1,6 +1,8 @@
-# vite-vue3-starter
-
-一个 `vite + vue3 + ts` 开箱即用现代开发模板
+<div align="center">
+    <img width="200px" height="200px" src="https://gitee.com/dishait/tov-template/raw/main/public/logo.png" />
+    <h1>vite-vue3-starter</h1>
+    <p>一个 `vite + vue3 + ts` 开箱即用现代开发模板</p>
+</div>
 
 ## 特点 🐳
 
@@ -31,7 +33,7 @@
 25. tsx 支持
 26. gzip 资源压缩支持
 27. 环境变量配置支持
-
+28. 统一的代码规范与风格支持
 
 ## 克隆模板 🦕
 
@@ -289,7 +291,7 @@ eg:
 具体可见 👉 [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages#file-system-routing)
 
 
-### [4. 布局系统](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
+### [4. 布局系统](https://github.com/dishait/vite-plugin-vue-meta-layouts)
 
 #### 默认布局
 
@@ -1106,7 +1108,6 @@ export default defineComponent({
 
 ## License
 
-Made with markthree
+Made with [markthree](./LICENSE)
 
 Published under [MIT License](./LICENSE).
-

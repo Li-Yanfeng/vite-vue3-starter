@@ -71,4 +71,4 @@ function remove(plop) {
     })
 }
 
-export default remove
+module.exports = remove

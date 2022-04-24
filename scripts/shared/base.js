@@ -28,5 +28,6 @@ const showDir = type => {
 
 module.exports = {
     showExt,
-    showDir
+    showDir,
+    moduleTypes
 }
