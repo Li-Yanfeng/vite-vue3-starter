@@ -4,7 +4,6 @@ const { showDir, showExt, moduleTypes } = require('./shared/base')
 
 /**
  * 自动创建
- *
  * @param {import('plop').NodePlopAPI} plop
  */
 function create(plop) {
@@ -61,7 +60,6 @@ function create(plop) {
             const { type, shouldReset } = answer
             if (exist && !shouldReset) {
                 throw new Error(`${type} 创建失败`)
-                return []
             }
             return [
                 {

@@ -5,6 +5,7 @@ import Icons from 'unplugin-icons/vite'
 import Inspect from 'vite-plugin-inspect'
 import Windicss from 'vite-plugin-windicss'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import Rmovelog from 'vite-plugin-removelog'
 import ViteRestart from 'vite-plugin-restart'
 import I18n from '@intlify/vite-plugin-vue-i18n'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -13,13 +14,10 @@ import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import viteCompression from 'vite-plugin-compression'
-import { DirResolverHelper } from 'vite-auto-import-resolvers'
 import { NaiveUiResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 import Modules from 'vite-plugin-use-modules'
-import PkgConfig from 'vite-plugin-package-config'
-import OptimizationPersist from 'vite-plugin-optimize-persist'
 import { GenerateTitle } from './plugins/html'
-import { AutoImportResolvers } from './shared/resolvers'
+import { AutoImportResolvers, normalizeResolvers } from './shared/resolvers'
 import Markdown, { markdownWrapperClasses } from './plugins/markdown'
 
 /**
@@ -37,10 +35,6 @@ export function createPlugins(viteEnv: any) {
         }),
         // 生成 title
         GenerateTitle(),
-        // 将包信息文件作为 vite 的配置文件之一，为 vite-plugin-optimize-persist 所用
-        PkgConfig(),
-        // 依赖预构建分析，提高大型项目性能
-        OptimizationPersist(),
         // vue 官方插件，用来解析 sfc
         Vue({
             include: [/\.vue$/, /\.md$/]
@@ -74,15 +68,28 @@ export function createPlugins(viteEnv: any) {
             extensions: ['vue', 'md', 'tsx'],
             include: [/\.md$/, /\.vue$/, /\.tsx$/],
             dts: resolve(__dirname, './types/components.d.ts'),
-            resolvers: [IconsResolver(), NaiveUiResolver(), VueUseComponentsResolver()]
+            resolvers: normalizeResolvers({
+                onlyExist: [
+                    [NaiveUiResolver(), 'naive-ui'],
+                    [VueUseComponentsResolver(), '@vueuse/components']
+                ],
+                include: [IconsResolver()]
+            })
         }),
-        // 目录下 api 按需自动引入辅助插件
-        DirResolverHelper(),
         // api 自动按需引入
         AutoImport({
-            dts: './build/types/auto-imports.d.ts',
+            dirs: [
+                'src/stores',
+                'src/composables'
+            ],
+            dts: './presets/types/auto-imports.d.ts',
             imports: ['vue', 'pinia', 'vue-i18n', 'vue-router', '@vueuse/core'],
-            resolvers: AutoImportResolvers
+            resolvers: AutoImportResolvers,
+            eslintrc: {
+                enabled: true,
+                globalsPropValue: true,
+                filepath: 'presets/eslint/.eslintrc-auto-import.json'
+            }
         }),
         // i18n 国际化支持
         I18n({
@@ -92,13 +99,16 @@ export function createPlugins(viteEnv: any) {
         }),
         // 预设热重启服务
         ViteRestart({
-            restart: ['.env*', 'build/tov.[jt]s', 'build/shared/**/*']
+            restart: ['.env*', 'presets/plugin.[jt]s', 'presets/shared/**/*']
         }),
         // tsx 支持
         vueJsx(),
         // 生产环境资源压缩
         viteCompression({
+            // @ts-ignore
             algorithm: VITE_BUILD_COMPRESS
-        })
+        }),
+        // 生产环境下移除 console.log, console.warn, console.error
+        Rmovelog()
     ]
 }

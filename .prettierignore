@@ -1,0 +1,4 @@
+# 忽略 prettier 格式化
+dist
+node_modules
+presets/types

@@ -1,11 +1,10 @@
 /**
  * 进度条插件
  */
-import { App } from 'vue'
-import NProgress from 'nprogress'
 import { router } from './router'
+import NProgress from 'nprogress'
 
-export default (app: App) => {
+export default () => {
     router.beforeEach(() => {
         NProgress.start()
     })

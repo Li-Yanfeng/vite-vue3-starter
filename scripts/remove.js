@@ -5,11 +5,10 @@ const { showDir, moduleTypes } = require('./shared/base')
 
 /**
  * 自动删除
- *
  * @param {import('plop').NodePlopAPI} plop
  */
 function remove(plop) {
-    plop.setActionType('remove', (answers, config, plop) => {
+    plop.setActionType('remove', answers => {
         const { name, type, shouldRemove } = answers
         const dir = showDir(type)
         const target = `./src/${dir}/${name}`

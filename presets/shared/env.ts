@@ -27,7 +27,9 @@ function wrapperEnv() {
         } else if (envName === 'VITE_PROXY') {
             try {
                 realValue = JSON.parse(realValue)
-            } catch (error) {}
+            } catch (error) {
+
+            }
         }
 
         // 重新设置值

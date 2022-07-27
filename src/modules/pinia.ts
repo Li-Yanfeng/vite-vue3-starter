@@ -1,6 +1,13 @@
 /**
  * 状态管理库
  */
-import { App } from 'vue'
+import type { App } from 'vue'
+import persistedstate from 'pinia-plugin-persistedstate'
 
-export default (app: App) => app.use(createPinia())
+export default (app: App) => {
+    const pinia = createPinia()
+
+    pinia.use(persistedstate)
+
+    app.use(pinia)
+}

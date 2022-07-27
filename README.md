@@ -1,8 +1,11 @@
 <div align="center">
     <img width="200px" height="200px" src="https://gitee.com/dishait/tov-template/raw/main/public/logo.png" />
-    <h1>vite-vue3-starter</h1>
-    <p>一个 `vite + vue3 + ts` 开箱即用现代开发模板</p>
+    <h1>tov-template</h1>
+    <p>vite + vue3 + ts 开箱即用现代开发模板</p>
 </div>
+
+<br />
+<br />
 
 ## 特点 🐳
 
@@ -34,6 +37,10 @@
 26. gzip 资源压缩支持
 27. 环境变量配置支持
 28. 统一的代码规范与风格支持
+29. 生产环境自动移除开发日志
+
+<br />
+<br />
 
 ## 克隆模板 🦕
 
@@ -57,11 +64,17 @@ npx degit https://github.com/dishait/tov-template#main
 
 4. 新的 `Github` 仓库 👉 [Use this template](https://github.com/dishait/tov-template/generate)
 
+<br />
+<br />
+<br />
 
 ## `node` 版本推荐 🐎
 
 因为该模板完全面向现代，所以推荐大家使用 `node` 当前的长期维护版本 `v16`， 大于 `v16.13.1` 即可。
 
+<br />
+<br />
+<br />
 
 ## 使用 🐂
 
@@ -228,6 +241,24 @@ pnpm i
 # 或者 yarn
 ```
 
+13. 代码规范校验
+
+```shell
+pnpm lint
+
+# 或者 npm run lint
+# 或者 yarn lint
+
+# 校验时修复
+
+pnpm lint:fix
+
+# 或者 npm run lint:fix
+# 或者 yarn lint:fix
+```
+
+<br />
+<br />
 
 ## 动机 🐗
 
@@ -236,6 +267,8 @@ pnpm i
 1. 为下次开发节省浪费在配置上的时间
 2. 结合主流插件整合现代开发架构，提高开发效率
 
+<br />
+<br />
 
 ## 使用场景 🐻
 
@@ -244,23 +277,27 @@ pnpm i
 1. 不想浪费时间在项目配置上
 2. 希望尝试用更现代的方式开发 `web` 应用，提高开发效率
 
+<br />
+<br />
 
 ## 启发 🐃
 
-该模板受 **[vitesse](https://github.com/antfu/vitesse)** 启发，如果你有 SSG 的场景，那么推荐你始终使用 **[vitesse](https://github.com/antfu/vitesse)**。
+该模板受 **[vitesse](https://github.com/antfu/vitesse)** 启发，如果你有 `SSG` 的场景，那么推荐你始终使用 **[vitesse](https://github.com/antfu/vitesse)**。
 
+<br />
+<br />
 
 ## 组织 🦔
 
 欢迎关注 **帝莎编程**
 
--   [官网](http://dishaxy.dishait.cn/)
--   [Gitee](https://gitee.com/dishait)
+- [官网](http://dishaxy.dishait.cn/)
+- [Gitee](https://gitee.com/dishait)
+- [Github](https://github.com/dishait)
+- [网易云课堂](https://study.163.com/provider/480000001892585/index.htm?share=2&shareId=480000001892585)
 
--   [Github](https://github.com/dishait)
-
--   [网易云课堂](https://study.163.com/provider/480000001892585/index.htm?share=2&shareId=480000001892585)
-
+<br />
+<br />
 
 ## 详情 🐳
 
@@ -268,11 +305,13 @@ pnpm i
 
 该模板采用 **[vite](https://cn.vitejs.dev/)** 作为构建工具，你可以在根目录下的 `vite.config.ts` 对项目的构建进行配置。
 
-对于众多主流插件的引入和繁杂配置已经整合到根目录下的预设 `build` 中，大多数情况下你是不需要重新对它们进行配置的。
+对于众多主流插件的引入和繁杂配置已经整合到根目录下的预设 `presets` 中，大多数情况下你是不需要重新对它们进行配置的。
 
+<br />
 
 ### [2. Vue3 的](https://v3.cn.vuejs.org/)
 
+<br />
 
 ### [3. 文件路由](https://github.com/hannoeru/vite-plugin-pages)
 
@@ -280,16 +319,17 @@ pnpm i
 
 eg:
 
--   `src/pages/index.vue` => `/`
--   `src/pages/about.vue` => `/about`
--   `src/pages/users/index.vue` => `/users`
--   `src/pages/users/profile.vue` => `/users/profile`
--   `src/pages/users/[id].vue` => `/users/:id`
--   `src/pages/[user]/settings.vue` => `/:user/settings`
--   `src/pages/[...notFound].vue` => 404 路由
+- `src/pages/index.vue` => `/`
+- `src/pages/about.vue` => `/about`
+- `src/pages/users/index.vue` => `/users`
+- `src/pages/users/profile.vue` => `/users/profile`
+- `src/pages/users/[id].vue` => `/users/:id`
+- `src/pages/[user]/settings.vue` => `/:user/settings`
+- `src/pages/[...notFound].vue` => 404 路由
 
 具体可见 👉 [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages#file-system-routing)
 
+<br />
 
 ### [4. 布局系统](https://github.com/dishait/vite-plugin-vue-meta-layouts)
 
@@ -300,9 +340,9 @@ eg:
 ```html
 <!-- src/layouts/default.vue -->
 <template>
-    我是默认布局
-    <router-view />
-    <!-- 页面视图出口 -->
+	我是默认布局
+	<router-view />
+	<!-- 页面视图出口 -->
 </template>
 ```
 
@@ -311,7 +351,7 @@ eg:
 ```html
 <!-- src/pages/index.vue -->
 <template>
-    <div>我是首页</div>
+	<div>我是首页</div>
 </template>
 ```
 
@@ -326,7 +366,7 @@ eg:
 ```html
 <!-- src/pages/about.vue -->
 <template>
-    <div>我是关于页</div>
+	<div>我是关于页</div>
 </template>
 ```
 
@@ -336,6 +376,7 @@ eg:
 我是默认布局 我是关于页
 ```
 
+<br />
 
 #### 非默认布局
 
@@ -344,9 +385,9 @@ eg:
 ```html
 <!-- src/layouts/custom.vue -->
 <template>
-    我是非默认布局custom
-    <router-view />
-    <!-- 页面视图出口 -->
+	我是非默认布局custom
+	<router-view />
+	<!-- 页面视图出口 -->
 </template>
 ```
 
@@ -355,7 +396,7 @@ eg:
 ```html
 <!-- src/pages/index.vue -->
 <template>
-    <div>我是首页</div>
+	<div>我是首页</div>
 </template>
 
 <!-- 添加自定义块 👇 -->
@@ -368,8 +409,9 @@ eg:
 我是非默认布局custom 我是首页
 ```
 
-具体可见 👉 [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts#overview)
+具体可见 👉 [vite-plugin-vue-meta-layouts](https://github.com/dishait/vite-plugin-vue-meta-layouts)
 
+<br />
 
 ### [5. Mock 支持](https://github.com/vbenjs/vite-plugin-mock)
 
@@ -380,18 +422,18 @@ eg:
 ```ts
 import { MockMethod } from 'vite-plugin-mock'
 export default [
-    {
-        url: '/api/get',
-        method: 'get',
-        response: () => {
-            return {
-                code: 0,
-                data: {
-                    name: 'vben'
-                }
-            }
-        }
-    }
+	{
+		url: '/api/get',
+		method: 'get',
+		response: () => {
+			return {
+				code: 0,
+				data: {
+					name: 'vben',
+				},
+			}
+		},
+	},
 ] as MockMethod[]
 ```
 
@@ -399,15 +441,15 @@ export default [
 
 ```html
 <script setup lang="ts">
-    import { useRequest } from 'vue-request'
-    // 请求接口 /api/get
-    const { data, loading, error } = useRequest('/api/get')
+	import { useRequest } from 'vue-request'
+	// 请求接口 /api/get
+	const { data, loading, error } = useRequest('/api/get')
 </script>
 
 <template>
-    <div>data: {{data}}</div>
-    <div>loading: {{loading}}</div>
-    <div>error: {{error}}</div>
+	<div>data: {{data}}</div>
+	<div>loading: {{loading}}</div>
+	<div>error: {{error}}</div>
 </template>
 ```
 
@@ -415,6 +457,7 @@ export default [
 
 更多 `mock` 设置可见 👉 [vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock)
 
+<br />
 
 ### [6. Api 自动引入](https://github.com/antfu/unplugin-auto-import)
 
@@ -445,7 +488,7 @@ const doubled = computed(() => count.value * 2)
 
 当然还有项目中的自动引入，只需要满足以下规范即可。
 
-1. `src/composables` 下凡是 `use` 开头的模块，同时里边有 `default` 导出，该导出就可以被按需自动引入。
+1. `src/composables` 的导出将被按需自动引入。
 
 例如有个 `src/composables/foo.ts`
 
@@ -458,31 +501,31 @@ export default 1000
 
 ```html
 <script setup lang="ts">
-    console.log(foo) // 输出 1000
+	console.log(foo) // 输出 1000
 </script>
 
 <template>
-    <div @click="store.inc()">{{store.counter}}</div>
+	<div @click="store.inc()">{{store.counter}}</div>
 </template>
 ```
 
-2. `src/stores` 下凡是 `Store` 结尾的模块，同时里边有 `default` 导出，该导出就可以按需自动引入。
+1. `src/stores` 的导出将被按需自动引入。
 
 例如有个 `src/stores/counterStore.ts`
 
 ```ts
 // default 导出
 export default defineStore('counter', {
-    state() {
-        return {
-            counter: 1
-        }
-    },
-    actions: {
-        inc() {
-            this.counter++
-        }
-    }
+	state() {
+		return {
+			counter: 1,
+		}
+	},
+	actions: {
+		inc() {
+			this.counter++
+		},
+	},
 })
 ```
 
@@ -490,16 +533,17 @@ export default defineStore('counter', {
 
 ```html
 <script setup lang="ts">
-    const store = counterStore()
+	const store = counterStore()
 </script>
 
 <template>
-    <div @click="store.inc()">{{store.counter}}</div>
+	<div @click="store.inc()">{{store.counter}}</div>
 </template>
 ```
 
-具体可见 👉 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 与 [vite-auto-import-resolvers](https://github.com/dishait/vite-auto-import-resolvers)
+具体可见 👉 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)。
 
+<br />
 
 ### [7. 组件自动引入](https://github.com/antfu/unplugin-auto-import)
 
@@ -508,11 +552,11 @@ export default defineStore('counter', {
 ```html
 <!-- src/pages/index.vue -->
 <script setup lang="ts">
-    import Hello from '../components/Hello.vue'
+	import Hello from '../components/Hello.vue'
 </script>
 
 <template>
-    <Hello />
+	<Hello />
 </template>
 ```
 
@@ -521,7 +565,7 @@ export default defineStore('counter', {
 ```html
 <!-- src/pages/index.vue -->
 <template>
-    <Hello />
+	<Hello />
 </template>
 ```
 
@@ -541,20 +585,33 @@ pnpm add naive-ui
 ```html
 <!-- src/pages/index.vue -->
 <template>
-    <n-button type="success">Success</n-button>
+	<n-button type="success">Success</n-button>
 </template>
 ```
 
 目前支持的组件库有:
 
--   [naive ui](https://www.naiveui.com/zh-CN/os-theme)
--   [arco.design](https://arco.design/)
--   [element-plus](https://element-plus.gitee.io/zh-CN/)
--   [ant design of vue](https://next.antdv.com/docs/vue/introduce-cn/)
--   [@vueuse/components](https://vueuse.org/guide/components.html)
+[vant](https://github.com/youzan/vant)
+[idux](https://github.com/IDuxFE/idux)
+[devui](https://github.com/DevCloudFE/vue-devui)
+[quasar](https://github.com/quasarframework/quasar)
+[varlet](https://github.com/varletjs/varlet)
+[inkline](https://github.com/inkline/inkline)
+[vuetify](https://github.com/vuetifyjs/vuetify)
+[naive-ui](https://github.com/TuSimple/naive-ui)
+[primevue](https://github.com/primefaces/primevue)
+[layui-vue](https://gitee.com/layui/layui-vue)
+[view-design](https://iviewui.com/)
+[arco-design](https://github.com/arco-design/arco-design)
+[element-plus](https://github.com/element-plus/element-plus)
+[ant-design-vue](https://github.com/vueComponent/ant-design-vue)
+[@headlessui/vue](https://github.com/tailwindlabs/headlessui)
+[tdesign-vue-next](https://github.com/Tencent/tdesign-vue-next)
+[@vueuse/components](https://github.com/vueuse/vueuse/tree/main/packages/components)
 
 具体可见 👉 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
 
+<br />
 
 ### [8. 图标自动引入](https://github.com/antfu/unplugin-auto-import)
 
@@ -574,7 +631,7 @@ pnpm add naive-ui
 
 ```html
 <template>
-    <i-mdi:account-box-multiple />
+	<i-mdi:account-box-multiple />
 </template>
 ```
 
@@ -597,7 +654,7 @@ npm i @iconify/mdi -D
 ```html
 <!-- 模板中代码 -->
 <template>
-    <i-mdi:account-box-multiple />
+	<i-mdi:account-box-multiple />
 </template>
 ```
 
@@ -607,6 +664,7 @@ npm i @iconify/mdi -D
 
 具体可见 👉 [unplugin-icons](https://github.com/antfu/unplugin-icons)
 
+<br />
 
 ### [9. VueUse 支持](https://vueuse.org/)
 
@@ -614,23 +672,25 @@ npm i @iconify/mdi -D
 
 ```html
 <script setup lang="ts">
-    // useMouse 被自动按需引入了，不需要import
-    const { x, y } = useMouse()
+	// useMouse 被自动按需引入了，不需要import
+	const { x, y } = useMouse()
 </script>
 
 <template>
-    <div>x坐标 {{x}}</div>
-    <div>y坐标 {{y}}</div>
+	<div>x坐标 {{x}}</div>
+	<div>y坐标 {{y}}</div>
 </template>
 ```
 
 具体可见 👉 [VueUse](https://vueuse.org/)
 
+<br />
 
 ### [10. TypeScript 的](https://www.tslang.cn/)
 
 不需要重新配置，直接用 `ts` 书写就行了。
 
+<br />
 
 ### [11. Windi CSS 的](https://cn.windicss.org/)
 
@@ -640,8 +700,8 @@ npm i @iconify/mdi -D
 
 ```html
 <template>
-    <div class="bg-red-500 text-white">我是红色背景的白色文本</div>
-    <template></template
+	<div class="bg-red-500 text-white">我是红色背景的白色文本</div>
+	<template></template
 ></template>
 ```
 
@@ -651,8 +711,8 @@ npm i @iconify/mdi -D
 
 ```html
 <template>
-    <div text="white" bg="red-500">我是红色背景的白色文本</div>
-    <template></template
+	<div text="white" bg="red-500">我是红色背景的白色文本</div>
+	<template></template
 ></template>
 ```
 
@@ -682,6 +742,7 @@ pnpm analysis:build
 
 具体可见 👉 [Windi CSS](https://cn.windicss.org/)
 
+<br />
 
 ### [12. 暗黑模式支持](https://cn.windicss.org/features/dark-mode.html#dark-mode)
 
@@ -705,19 +766,22 @@ export const useDarks = () => ({ isDark, toggleDark })
 
 ```html
 <script setup lang="ts">
-    import { useDarks } from '../composables/useDarks'
+	import { useDarks } from '../composables/useDarks'
 
-    const { isDark, toggleDark } = useDarks()
+	const { isDark, toggleDark } = useDarks()
 </script>
 
 <template>
-    <div m="6">Hello，This is the tov template！！</div>
-    <div m="6" cursor="pointer" @click="toggleDark()">light: {{ isDark }} click me!!</div>
+	<div m="6">Hello，This is the tov template！！</div>
+	<div m="6" cursor="pointer" @click="toggleDark()">
+		light: {{ isDark }} click me!!
+	</div>
 </template>
 ```
 
 具体可见 👉 [暗黑模式](https://cn.windicss.org/features/dark-mode.html#dark-mode)
 
+<br />
 
 ### [13. SWR 请求支持](https://cn.attojs.org/)
 
@@ -729,14 +793,14 @@ SWR 是更现代的请求方式，具体可见文章 👉 [SWR](https://zhuanlan
 
 ```html
 <script setup lang="ts">
-    import { useRequest } from 'vue-request'
-    const { data, loading, error } = useRequest('/api/test')
+	import { useRequest } from 'vue-request'
+	const { data, loading, error } = useRequest('/api/test')
 </script>
 
 <template>
-    <div>data: {{data}}</div>
-    <div>error: {{error}}</div>
-    <div>loading: {{loading}}</div>
+	<div>data: {{data}}</div>
+	<div>error: {{error}}</div>
+	<div>loading: {{loading}}</div>
 </template>
 ```
 
@@ -744,6 +808,7 @@ SWR 是更现代的请求方式，具体可见文章 👉 [SWR](https://zhuanlan
 
 具体可见 👉 [vue-request](https://cn.attojs.org/)
 
+<br />
 
 ### [14. pinia 状态管理](https://pinia.vuejs.org/)
 
@@ -758,14 +823,14 @@ SWR 是更现代的请求方式，具体可见文章 👉 [SWR](https://zhuanlan
 import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', {
-    state: () => {
-        return { count: 0 }
-    },
-    actions: {
-        inc() {
-            this.count++
-        }
-    }
+	state: () => {
+		return { count: 0 }
+	},
+	actions: {
+		inc() {
+			this.count++
+		},
+	},
 })
 ```
 
@@ -785,6 +850,7 @@ export const useCounterStore = defineStore('counter', {
 
 更多具体使用可见 👉 [pinia](https://pinia.vuejs.org/)
 
+<br />
 
 ### [15. pnpm 包管理器](https://pnpm.io/zh/)
 
@@ -792,6 +858,7 @@ export const useCounterStore = defineStore('counter', {
 
 具体可见 👉 [pnpm](https://pnpm.io/zh/)
 
+<br />
 
 ### [16. 跳转进度条支持](https://github.com/rstacruz/nprogress)
 
@@ -802,15 +869,15 @@ export const useCounterStore = defineStore('counter', {
 
 /** 省略其他样式 **/
 #nprogress .bar {
-    @apply bg-purple-700 bg-opacity-75; /** 配色 **/
+	@apply bg-purple-700 bg-opacity-75; /** 配色 **/
 
-    position: fixed;
-    z-index: 1031;
-    top: 0;
-    left: 0;
+	position: fixed;
+	z-index: 1031;
+	top: 0;
+	left: 0;
 
-    width: 100%;
-    height: 2px;
+	width: 100%;
+	height: 2px;
 }
 ```
 
@@ -818,6 +885,7 @@ export const useCounterStore = defineStore('counter', {
 
 具体可见 👉 [nprogress](https://github.com/rstacruz/nprogress)
 
+<br />
 
 ### [17. Inspect 调试支持](https://github.com/antfu/vite-plugin-inspect)
 
@@ -842,10 +910,9 @@ pnpm dev
 
 具体可见 👉 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)
 
+<br />
 
-### 18. 插件自动加载支持
-
-该功能由 `vite` 的 [Global 导入](https://cn.vitejs.dev/guide/features.html#glob-import) 实现。
+### [18. 插件自动加载支持](https://github.com/dishait/vite-plugin-use-modules)
 
 只需要在 `src/modules` 中的模块里导出默认函数即可。
 
@@ -875,8 +942,9 @@ export default (app: App) => app.use(router)
 
 当然 `pinia` 和 `vue-router` 已经预设好了，你不需要重新关注他们。
 
-具体可见实现 👉 [插件自动加载实现](/src/main.ts)
+具体可见 👉 [vite-plugin-use-modules](https://github.com/dishait/vite-plugin-use-modules)
 
+<br />
 
 ### [19. Vitest 单元测试支持](https://vitest.dev/guide/#configuring-vitest)
 
@@ -886,18 +954,18 @@ export default (app: App) => app.use(router)
 import { it, describe, expect, assert } from 'vitest'
 
 describe('suite name', () => {
-    it('foo', () => {
-        expect(1 + 1).toEqual(2)
-        expect(true).to.be.true
-    })
+	it('foo', () => {
+		expect(1 + 1).toEqual(2)
+		expect(true).to.be.true
+	})
 
-    it('bar', () => {
-        assert.equal(Math.sqrt(4), 2)
-    })
+	it('bar', () => {
+		assert.equal(Math.sqrt(4), 2)
+	})
 
-    it('snapshot', () => {
-        expect({ foo: 'bar' }).toMatchSnapshot()
-    })
+	it('snapshot', () => {
+		expect({ foo: 'bar' }).toMatchSnapshot()
+	})
 })
 ```
 
@@ -921,6 +989,7 @@ pnpm coverage
 
 具体可见 👉 [Vitest](https://vitest.dev/guide/#configuring-vitest)
 
+<br />
 
 ### [20. 支持 Markdown 渲染](https://github.com/antfu/vite-plugin-md)
 
@@ -940,6 +1009,8 @@ pnpm coverage
 
 具体可见 👉 [vite-plugin-md](https://github.com/antfu/vite-plugin-md)
 
+<br />
+<br />
 
 ### 21. 路径别名 `~` 支持
 
@@ -948,13 +1019,15 @@ pnpm coverage
 ```html
 <!-- src/pages/index.vue -->
 <script lang="ts" setup>
-    import { useDarks } from '@/composables/dark'
+	import { useDarks } from '~/composables/dark'
 
-    // 等价于
-    // import { useDarks } from "../composables/dark"
+	// 等价于
+	// import { useDarks } from "../composables/dark"
 </script>
 ```
 
+<br />
+<br />
 
 ### 22. 命令行自动创建与删除
 
@@ -976,6 +1049,8 @@ pnpm auto:remove
 # 或者 yarn auto:remove
 ```
 
+<br />
+<br />
 
 ### [23. i18n 国际化支持](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n)
 
@@ -1007,18 +1082,20 @@ not-found: 未找到页面
 
 ```html
 <script setup>
-    // 该api是全局按需引入的，所以可以直接用
-    // t 用来绑定特定的语块
-    const { t, locale } = useI18n()
+	// 该api是全局按需引入的，所以可以直接用
+	// t 用来绑定特定的语块
+	const { t, locale } = useI18n()
 
-    const toggleLocale = () => {
-        // locale.value 用来表示当前所属语言，可修改进行语言切换
-        locale.value = locale.value === 'zh-CN' ? 'en' : 'zh-CN'
-    }
+	const toggleLocale = () => {
+		// locale.value 用来表示当前所属语言，可修改进行语言切换
+		locale.value = locale.value === 'zh-CN' ? 'en' : 'zh-CN'
+	}
 </script>
 
 <template>
-    <div m="6" cursor="pointer" @click="toggleLocale()">language: {{ t('index') }} click me!!</div>
+	<div m="6" cursor="pointer" @click="toggleLocale()">
+		language: {{ t('index') }} click me!!
+	</div>
 </template>
 ```
 
@@ -1028,8 +1105,10 @@ not-found: 未找到页面
 
 `vscode` 插件推荐:
 
--   多合一的 `i18n` 支持 [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally)
+- 多合一的 `i18n` 支持 [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally)
 
+<br />
+<br />
 
 ### 24. 漂亮的 `404` 页支持
 
@@ -1052,7 +1131,7 @@ not-found: 未找到页面
 ```html
 <!-- 省略各种代码 -->
 <template>
-    <img src="/notFound/32.svg" class="cover" alt="page not found" />
+	<img src="/notFound/32.svg" class="cover" alt="page not found" />
 </template>
 ```
 
@@ -1061,7 +1140,7 @@ not-found: 未找到页面
 ```html
 <!-- 省略各种代码 -->
 <template>
-    <img src="/notFound/33.svg" class="cover" alt="page not found" />
+	<img src="/notFound/33.svg" class="cover" alt="page not found" />
 </template>
 ```
 
@@ -1069,6 +1148,8 @@ not-found: 未找到页面
 
 ![notFound-other](public/docs/notFound-other.png)
 
+<br />
+<br />
 
 ### 25. [`tsx` 支持](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
 
@@ -1079,20 +1160,22 @@ not-found: 未找到页面
 ```tsx
 // src/components/foo.tsx
 export default defineComponent({
-    render() {
-        return <div>Test</div>
-    }
+	render() {
+		return <div>Test</div>
+	},
 })
 ```
 
 ```html
 <template>
-    <foo />
+	<foo />
 </template>
 ```
 
 具体可见 👉 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
 
+<br />
+<br />
 
 ### 26. [`gzip` 资源压缩支持](https://github.com/vbenjs/vite-plugin-compression)
 
@@ -1100,14 +1183,39 @@ export default defineComponent({
 
 具体可见 👉 [vite-plugin-compression](https://github.com/vbenjs/vite-plugin-compression)
 
+<br />
+<br />
 
 ### 27. [环境变量配置支持](https://cn.vitejs.dev/guide/env-and-mode.html)
 
 根目录下有三个环境变量配置文件 `.env`，`.env.development` 和 `.env.production` 用来对项目进行配置。
 
+<br />
+<br />
+
+### 28. 统一的代码规范与风格支持
+
+由 [eslint](https://github.com/eslint/eslint) 提供的代码规范校验，使用 [prettier](https://github.com/prettier/prettier) 统一代码风格。
+
+由 [husky](https://github.com/typicode/husky) + [lint-staged](https://github.com/okonet/lint-staged) 提供的 `commit` 时校验。
+
+<br />
+<br />
+
+### 29. [生产环境自动移除开发日志](https://github.com/dishait/vite-plugin-removelog)
+
+生产环境下 `console.log`，`console.warn` 与 `console.error` 等日志会被自动移除掉，以避免开发时日志的泄漏。
+
+具体可见 👉 [vite-plugin-removelog](https://github.com/dishait/vite-plugin-removelog)
+
+<br />
+<br />
+<br />
 
 ## License
 
 Made with [markthree](./LICENSE)
 
 Published under [MIT License](./LICENSE).
+
+<br />
