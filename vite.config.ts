@@ -7,10 +7,11 @@ import type { UserConfig } from 'vite'
 import { resolve } from 'path'
 import { viteEnv } from './presets/shared/env'
 import { createPlugins } from './presets/plugin'
+import { createProxy } from './presets/proxy'
 
 export default (): UserConfig => {
     // 读取所有环境变量配置文件到process.env
-    const { VITE_PORT, VITE_PUBLIC_PATH } = viteEnv
+    const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv
 
     return {
         base: VITE_PUBLIC_PATH,
@@ -27,7 +28,8 @@ export default (): UserConfig => {
         server: {
             host: '127.0.0.1',
             port: VITE_PORT,
-            open: true
+            open: false,
+            proxy: createProxy(VITE_PROXY)
         }
     }
 }

@@ -17,24 +17,27 @@ function wrapperEnv() {
 
     const ret: any = {}
 
-    Object.keys(env).forEach(envName => {
+    Object.keys(env).forEach(key => {
         // 获取所对应的值
-        let realValue = env[envName].replace(/\\n/g, '\n')
-        realValue = realValue === 'true' ? true : realValue === 'false' ? false : realValue
+        let val = env[key].replace(/\\n/g, '\n')
 
-        if (envName === 'VITE_PORT') {
-            realValue = Number(realValue)
-        } else if (envName === 'VITE_PROXY') {
+        if (['true', 'false'].includes(val)) {
+            val = val === 'true'
+        }
+        if (['VITE_PORT'].includes(key)) {
+            val = Number(val)
+        }
+        if (key === 'VITE_PROXY' && val) {
             try {
-                realValue = JSON.parse(realValue)
+                val = JSON.parse(val)
             } catch (error) {
 
             }
         }
 
         // 重新设置值
-        ret[envName] = realValue
-        process.env[envName] = realValue
+        ret[key] = val
+        process.env[key] = val
     })
     return ret
 }

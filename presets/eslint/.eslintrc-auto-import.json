@@ -235,6 +235,7 @@
     "useTransition": true,
     "useUrlSearchParams": true,
     "useUserMedia": true,
+    "useUserStoreWithOut": true,
     "useVModel": true,
     "useVModels": true,
     "useVibrate": true,

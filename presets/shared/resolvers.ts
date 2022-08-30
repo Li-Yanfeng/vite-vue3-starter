@@ -1,12 +1,12 @@
 import { isPackageExists } from 'local-pkg'
 import type { Resolver } from 'unplugin-auto-import/types'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import type { ComponentResolver } from 'unplugin-vue-components/types'
 
 type Arrayable<T> = T | Array<T>
 type Resolvers = Arrayable<Arrayable<Resolver>>
 
-export const AutoImportResolvers: Resolvers = [NaiveUiResolver()]
+export const AutoImportResolvers: Resolvers = [AntDesignVueResolver()]
 
 interface Options {
     onlyExist?: [Arrayable<ComponentResolver>, string][]

@@ -14,7 +14,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import viteCompression from 'vite-plugin-compression'
-import { NaiveUiResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
+import { AntDesignVueResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 import Modules from 'vite-plugin-use-modules'
 import { GenerateTitle } from './plugins/html'
 import { AutoImportResolvers, normalizeResolvers } from './shared/resolvers'
@@ -70,7 +70,7 @@ export function createPlugins(viteEnv: any) {
             dts: resolve(__dirname, './types/components.d.ts'),
             resolvers: normalizeResolvers({
                 onlyExist: [
-                    [NaiveUiResolver(), 'naive-ui'],
+                    [AntDesignVueResolver(), 'ant-design-vue'],
                     [VueUseComponentsResolver(), '@vueuse/components']
                 ],
                 include: [IconsResolver()]
@@ -78,10 +78,7 @@ export function createPlugins(viteEnv: any) {
         }),
         // api 自动按需引入
         AutoImport({
-            dirs: [
-                'src/stores',
-                'src/composables'
-            ],
+            dirs: ['src/stores', 'src/composables'],
             dts: './presets/types/auto-imports.d.ts',
             imports: ['vue', 'pinia', 'vue-i18n', 'vue-router', '@vueuse/core'],
             resolvers: AutoImportResolvers,
