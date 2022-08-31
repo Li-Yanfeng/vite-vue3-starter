@@ -7,7 +7,6 @@ import Windicss from 'vite-plugin-windicss'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import Rmovelog from 'vite-plugin-removelog'
 import ViteRestart from 'vite-plugin-restart'
-import I18n from '@intlify/vite-plugin-vue-i18n'
 import { viteMockServe } from 'vite-plugin-mock'
 import Layouts from 'vite-plugin-vue-meta-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -80,19 +79,13 @@ export function createPlugins(viteEnv: any) {
         AutoImport({
             dirs: ['src/stores', 'src/composables'],
             dts: './presets/types/auto-imports.d.ts',
-            imports: ['vue', 'pinia', 'vue-i18n', 'vue-router', '@vueuse/core'],
+            imports: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
             resolvers: AutoImportResolvers,
             eslintrc: {
                 enabled: true,
                 globalsPropValue: true,
                 filepath: 'presets/eslint/.eslintrc-auto-import.json'
             }
-        }),
-        // i18n 国际化支持
-        I18n({
-            runtimeOnly: true,
-            compositionOnly: true,
-            include: [resolve(__dirname, '../locales/**')]
         }),
         // 预设热重启服务
         ViteRestart({
